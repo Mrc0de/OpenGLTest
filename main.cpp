@@ -11,7 +11,7 @@ int main(int argc, char** argv) {
     SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 4);
     SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 2);
     SDL_GL_SetAttribute(SDL_GL_STENCIL_SIZE, 8);
-    SDL_Window* window = SDL_CreateWindow("OpenGL It Works...", 100, 100, 800, 600, SDL_WINDOW_OPENGL);
+    SDL_Window* window = SDL_CreateWindow("OpenGL It Works...", 0, 0, 800, 600, SDL_WINDOW_OPENGL);
     //SDL_WINDOW_OPENGL - Create a window ready for OpenGL.
     //SDL_WINDOW_RESIZABLE - Create a resizable window.
     //SDL_WINDOW_FULLSCREEN - Create a fullscreen window.
@@ -21,7 +21,7 @@ int main(int argc, char** argv) {
     while (true) {
         if (SDL_PollEvent(&windowEvent)) { 
             if (windowEvent.type == SDL_QUIT) break;
-            //if (windowEvent.type == SDL_KEYUP && windowEvent.key.keysym.sym == SDLK_ESCAPE) break;
+            if (windowEvent.type == SDL_KEYUP && windowEvent.key.keysym.sym == SDLK_ESCAPE) break;
         }
         //SDL_GL_SwapWindow(window);
     }
