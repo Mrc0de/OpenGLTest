@@ -23,7 +23,7 @@ int main(int argc, char** argv) {
             if (windowEvent.type == SDL_QUIT) break;
             //if (windowEvent.type == SDL_KEYUP && windowEvent.key.keysym.sym == SDLK_ESCAPE) break;
         }
-        SDL_GL_SwapWindow(window);
+        //SDL_GL_SwapWindow(window);
     }
     
     SDL_Delay(1000);
