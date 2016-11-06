@@ -1,6 +1,9 @@
 #include <iostream>
+#define GLEW_STATIC
+#include <GL/glew.h>
 #include <SDL.h>
 #include <SDL_opengl.h>
+
 using namespace std;
 
 int main(int argc, char** argv) {
@@ -16,7 +19,11 @@ int main(int argc, char** argv) {
     //SDL_WINDOW_RESIZABLE - Create a resizable window.
     //SDL_WINDOW_FULLSCREEN - Create a fullscreen window.
     SDL_GLContext context = SDL_GL_CreateContext(window);
-    
+    glewExperimental = GL_TRUE;
+    glewInit();
+    GLuint vertexBuffer;
+    glGenBuffers(1, &vertexBuffer);
+    printf("%u\n", vertexBuffer);
     SDL_Event windowEvent;
     while (true) {
         if (SDL_PollEvent(&windowEvent)) { 
