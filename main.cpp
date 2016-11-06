@@ -8,16 +8,21 @@
 const GLchar* vertexSource =
     "#version 150 core\n"
     "in vec2 position;"
+    "in vec3 color;"
+    "out vec3 Color;"
     "void main()"
     "{"
+    "    Color = color;"
     "    gl_Position = vec4(position, 0.0, 1.0);"
     "}";
+
 const GLchar* fragmentSource =
     "#version 150 core\n"
+    "in vec3 Color;"
     "out vec4 outColor;"
     "void main()"
     "{"
-    "    outColor = vec4(1.0, 1.0, 1.0, 1.0);"
+    "    outColor = vec4(Color, 1.0);"
     "}";
 
 using namespace std;
@@ -43,9 +48,9 @@ int main(int argc, char** argv) {
     printf("%u\n", vertexBuffer);
     
     GLfloat vertices[] = {
-        0.0f,  0.5f, 
-        0.5f, -0.5f, 
-        -0.5f, -0.5f 
+        0.0f,  0.25f, 1.0f, 0.0f, 0.0f,
+        0.25f, -0.5f, 0.0f, 1.0f, 0.0f,
+        -0.5f, -0.25f, 0.0f, 0.0f, 1.0f
     };
     
     GLuint vao;
@@ -80,8 +85,13 @@ int main(int argc, char** argv) {
     glUseProgram(shaderProgram);
 
     GLint posAttrib = glGetAttribLocation(shaderProgram, "position");
-    glVertexAttribPointer(posAttrib, 2, GL_FLOAT, GL_FALSE, 0, 0);
     glEnableVertexAttribArray(posAttrib);
+    glVertexAttribPointer(posAttrib, 2, GL_FLOAT, GL_FALSE, 5*sizeof(GLfloat), 0);
+
+    
+    GLint colAttrib = glGetAttribLocation(shaderProgram, "color");
+    glEnableVertexAttribArray(colAttrib);
+    glVertexAttribPointer(colAttrib, 3, GL_FLOAT, GL_FALSE, 5*sizeof(GLfloat), (void*)(2*sizeof(GLfloat)));
 
     SDL_Event windowEvent;
     while (true) {
