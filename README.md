@@ -1,6 +1,6 @@
 # OpenGLTest
 Refreshing on OpenGL in C++
-
+<img src="https://github.com/Mrc0de/OpenGLTest/blob/master/Screenshot%20from%202016-11-06%2015-04-03.png?raw=true" />
 # Details
 Uses SDL2 Lib</br>
 SDL2 is available at www.libsdl.org<br/>
